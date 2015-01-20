@@ -19,8 +19,40 @@
 			Expression<Func<TAppendSource, TAppendResult>> appendResultSelector)
 		{
 			var visitor = new AppendVisitor<TSource, TResult, TAppendSource, TAppendResult>(appendSourceSelector, appendTargetSelector, appendResultSelector);
-			var result = visitor.Visit(resultSelector);
-			return (Expression<Func<TSource, TResult>>)result;
+			return visitor.VisitAndConvert(resultSelector, "Append");
+		}
+
+		public static Expression<Func<TSource, TResult>> Exclude<TSource, TResult>(this Expression<Func<TSource, TResult>> selector, params Expression<Func<TResult, object>>[] excludeFieldSelectors)
+		{
+			var visitor = new ExcludeVisitor<TResult>(excludeFieldSelectors);
+			return visitor.VisitAndConvert(selector, "Exclude");
+		}
+		public static Expression<Func<TSource, TResult>> Exclude<TSource, TResult>(this Expression<Func<TSource, TResult>> selector, IEnumerable<Expression<Func<TResult, object>>> excludeFieldSelectors)
+		{
+			var visitor = new ExcludeVisitor<TResult>(excludeFieldSelectors);
+			return visitor.VisitAndConvert(selector, "Exclude");
+		}
+
+		private class ExcludeVisitor<TResult> : ExpressionVisitor
+		{
+			private IEnumerable<Expression<Func<TResult, object>>> excludeFieldSelectors;
+			public ExcludeVisitor(params Expression<Func<TResult, object>>[] excludeFieldSelectors)
+			{
+				this.excludeFieldSelectors = excludeFieldSelectors;
+			}
+			public ExcludeVisitor(IEnumerable<Expression<Func<TResult, object>>> excludeFieldSelectors)
+			{
+				this.excludeFieldSelectors = excludeFieldSelectors;
+			}
+
+			protected override Expression VisitMemberInit(MemberInitExpression node)
+			{
+				var excludedMembers = excludeFieldSelectors.Select(o => o.Body).OfType<MemberExpression>().Select(o => o.Member).ToList();
+				var filtered = node.Bindings
+					.Where(o => !excludedMembers.Contains(o.Member))
+					.ToList();
+				return Expression.MemberInit(node.NewExpression, filtered);
+			}
 		}
 
 		private class AppendVisitor<TSource, TResult, TAppendSource, TAppendResult> : ExpressionVisitor

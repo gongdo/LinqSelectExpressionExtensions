@@ -167,7 +167,7 @@ namespace Sample
 		{
 			Seeding();
 			SimpleSelecting();
-			SimpleSelecting2();
+			SimpleFullSelecting();
 			MergeSelecting();
 			AppendSingleSelecting();
 			PreAppendedSelecting();
@@ -177,7 +177,7 @@ namespace Sample
 			Console.ReadKey();
 		}
 
-		private static void SimpleSelecting2()
+		private static void SimpleFullSelecting()
 		{
 			DumpUserSelecting(expressions.FullUserPrimaryLoginSelector);
 			var provider = new UserPrimaryLoginResultExpressionProvider();
@@ -223,6 +223,8 @@ namespace Sample
 			var provider2 = new UserResultExpressionProvider();
 			var mergingSelector2 = provider.UserSimpleSelector.Merge(provider2.UserSelector);
 			DumpUserSelecting(mergingSelector2);
+
+			DumpUserSelecting(mergingSelector.Exclude(o => o.Articles, o => o.UserLogins, o => o.Nickname));
 		}
 
 		private static void SimpleSelecting()
