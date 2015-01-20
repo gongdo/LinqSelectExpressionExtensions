@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Extensions\LinqSelectExpressionExtensions.cs" />
     <Compile Include="Extensions\LinqSelectMergeExtensions.cs" />
+    <Compile Include="LinqUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

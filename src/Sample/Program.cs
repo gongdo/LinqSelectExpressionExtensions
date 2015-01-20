@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Gongdosoft.Linq;
 using Gongdosoft.Linq.Extensions;
 using Sample.Data.Models;
 using Sample.Domain.Models;
@@ -17,41 +18,19 @@ namespace Sample
 			// Simple expressions that select dto
 			public Expression<Func<User, UserSimpleResult>> UserSimpleSelector
 			{
-				get
-				{
-					return o => new UserSimpleResult
-					{
-						Id = o.Id,
-						Nickname = o.Nickname ?? "(null)",
-						UserName = o.UserName
-					};
-				}
+				get { return LinqUtils.GenerateSelector<User, UserSimpleResult>(); }
 			}
 
 			public Expression<Func<User, UserPrimaryLoginResult>> UserPrimaryLoginSelector
 			{
-				get
-				{
-					return o => new UserPrimaryLoginResult
-					{
-						Id = o.Id,
-						Nickname = o.Nickname ?? "(null)",
-						UserName = o.UserName
-					};
-				}
+				get { return LinqUtils.GenerateSelector<User, UserPrimaryLoginResult>(); }
 			}
 
 			public Expression<Func<User, UserPrimaryLoginResult>> PrimaryLoginAppendedUserSelector
 			{
 				get
 				{
-					Expression<Func<User, UserPrimaryLoginResult>> expression = o => new UserPrimaryLoginResult
-					{
-						Id = o.Id,
-						Nickname = o.Nickname ?? "(null)",
-						UserName = o.UserName,
-					};
-					return expression.Append(o => o.UserLogins.OrderByDescending(login => login.Priority).FirstOrDefault(),
+					return UserPrimaryLoginSelector.Append(o => o.UserLogins.OrderByDescending(login => login.Priority).FirstOrDefault(),
 						o => o.PrimaryLogin, UserLoginSelector);
 				}
 			}
@@ -88,30 +67,12 @@ namespace Sample
 
 			public Expression<Func<UserLogin, UserLoginResult>> UserLoginSelector
 			{
-				get
-				{
-					return o => new UserLoginResult
-					{
-						Id = o.Id,
-						Priority = o.Priority,
-						ProviderKey = o.ProviderKey,
-						ProviderName = o.ProviderName,
-						UserId = o.UserId
-					};
-				}
+				get { return LinqUtils.GenerateSelector<UserLogin, UserLoginResult>(); }
 			}
 
 			public Expression<Func<Article, ArticleResult>> ArticleSelector
 			{
-				get
-				{
-					return o => new ArticleResult
-					{
-						Id = o.Id,
-						Text = o.Text,
-						UserId = o.UserId
-					};
-				}
+				get { return LinqUtils.GenerateSelector<Article, ArticleResult>(); }
 			}
 		}
 
