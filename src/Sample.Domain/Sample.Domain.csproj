@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{943823BD-6E66-4E3B-B0F6-4E9A41B1A0E4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{017C2E1C-C0DC-404E-8379-725A541D2AEF}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LinqSelectExpressionExtensions</RootNamespace>
-    <AssemblyName>LinqSelectExpressionExtensions</AssemblyName>
+    <RootNamespace>Sample.Domain</RootNamespace>
+    <AssemblyName>Sample.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,11 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Models\ArticleResult.cs" />
+    <Compile Include="Models\UserPrimaryLoginResult.cs" />
+    <Compile Include="Models\UserResult.cs" />
+    <Compile Include="Models\UserLoginResult.cs" />
+    <Compile Include="Models\UserSimpleResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\Sample.Data\Sample.Data.csproj">
+      <Project>{a86a8d41-0d60-47a1-810f-17785f767887}</Project>
+      <Name>Sample.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

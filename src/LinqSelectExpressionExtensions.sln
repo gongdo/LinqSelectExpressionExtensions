@@ -3,7 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqSelectExpressionExtensions", "LinqSelectExpressionExtensions\LinqSelectExpressionExtensions.csproj", "{943823BD-6E66-4E3B-B0F6-4E9A41B1A0E4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6200CC07-9DD7-4E01-95A3-D6F54AA9C64E}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gongdosoft.Linq", "Gongdosoft.Linq\Gongdosoft.Linq.csproj", "{8522415C-C86D-4CFF-97D1-57D5ED96B788}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Data", "Sample.Data\Sample.Data.csproj", "{A86A8D41-0D60-47A1-810F-17785F767887}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Data.EntityFramework", "Sample.Data.EntityFramework\Sample.Data.EntityFramework.csproj", "{259C9D7A-F1F9-486E-9317-A793D5595C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Data.Telerik", "Sample.Data.Telerik\Sample.Data.Telerik.csproj", "{4CF960FF-DAF4-4CFD-B555-FE2E2FC934F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{5B6F2739-D7C3-452D-972A-CC7F1127531C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Domain", "Sample.Domain\Sample.Domain.csproj", "{017C2E1C-C0DC-404E-8379-725A541D2AEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +28,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{943823BD-6E66-4E3B-B0F6-4E9A41B1A0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{943823BD-6E66-4E3B-B0F6-4E9A41B1A0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{943823BD-6E66-4E3B-B0F6-4E9A41B1A0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{943823BD-6E66-4E3B-B0F6-4E9A41B1A0E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8522415C-C86D-4CFF-97D1-57D5ED96B788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8522415C-C86D-4CFF-97D1-57D5ED96B788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8522415C-C86D-4CFF-97D1-57D5ED96B788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8522415C-C86D-4CFF-97D1-57D5ED96B788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86A8D41-0D60-47A1-810F-17785F767887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A86A8D41-0D60-47A1-810F-17785F767887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A86A8D41-0D60-47A1-810F-17785F767887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A86A8D41-0D60-47A1-810F-17785F767887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{259C9D7A-F1F9-486E-9317-A793D5595C1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{259C9D7A-F1F9-486E-9317-A793D5595C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{259C9D7A-F1F9-486E-9317-A793D5595C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{259C9D7A-F1F9-486E-9317-A793D5595C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CF960FF-DAF4-4CFD-B555-FE2E2FC934F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CF960FF-DAF4-4CFD-B555-FE2E2FC934F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CF960FF-DAF4-4CFD-B555-FE2E2FC934F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CF960FF-DAF4-4CFD-B555-FE2E2FC934F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6F2739-D7C3-452D-972A-CC7F1127531C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6F2739-D7C3-452D-972A-CC7F1127531C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6F2739-D7C3-452D-972A-CC7F1127531C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6F2739-D7C3-452D-972A-CC7F1127531C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{017C2E1C-C0DC-404E-8379-725A541D2AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{017C2E1C-C0DC-404E-8379-725A541D2AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{017C2E1C-C0DC-404E-8379-725A541D2AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{017C2E1C-C0DC-404E-8379-725A541D2AEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
